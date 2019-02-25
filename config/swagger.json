@@ -1,0 +1,85 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Email registration API",
+        "description": "A simple email registration service."
+    },
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/reglist": {
+            "get": {
+                "tags": [
+                    "AddrList"
+                ],
+                "summary": "Retrieves the list of timestamped email addresses.",
+                "operationId": "list_get",
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Card"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/register": {
+            "post": {
+                "tags": [
+                    "AddrList"
+                ],
+                "summary": "Registers an email address.",
+                "operationId": "add_email",
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "Card": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
